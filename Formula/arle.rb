@@ -18,6 +18,11 @@ class Arle < Formula
   def install
     bin.install "arle"
     bin.install "metal_serve" if File.exist?("metal_serve")
+    # MLX's load_default_library searches paths colocated with the binary;
+    # ship the metallib next to it so `metal_serve` can find Metal kernels
+    # without falling back to the compile-time cmake build dir (which is
+    # absent in distributed bottles).
+    bin.install "mlx.metallib" if File.exist?("mlx.metallib")
   end
 
   test do
