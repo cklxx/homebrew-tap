@@ -1,7 +1,9 @@
 class Arle < Formula
   desc "Pure-Rust runtime for serving, local agents, training, and evaluation"
   homepage "https://github.com/cklxx/arle"
+  url "https://github.com/cklxx/arle/releases/download/v0.1.1/arle-v0.1.1-macos-arm64.tar.gz"
   version "0.1.1"
+  sha256 "a9097df0b18ec3ccd6b55a529d158032b18d0bf79e1fe0c8c7cf21f82b4daefe"
   license "MIT"
 
   # macOS arm64 only. Linux users: see
@@ -13,15 +15,12 @@ class Arle < Formula
   depends_on arch: :arm64
   depends_on :macos
 
-  url "https://github.com/cklxx/arle/releases/download/v0.1.1/arle-v0.1.1-macos-arm64.tar.gz"
-  sha256 "a9097df0b18ec3ccd6b55a529d158032b18d0bf79e1fe0c8c7cf21f82b4daefe"
-
   def install
     bin.install "arle"
     bin.install "metal_serve" if File.exist?("metal_serve")
   end
 
   test do
-    assert_match "ARLE", shell_output("#{bin}/arle --help 2>&1", 0)
+    assert_match "ARLE", shell_output("#{bin}/arle --help 2>&1")
   end
 end
