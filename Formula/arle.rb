@@ -4,29 +4,21 @@ class Arle < Formula
   version "0.1.1"
   license "MIT"
 
-  on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/cklxx/arle/releases/download/v0.1.1/arle-v0.1.1-macos-arm64.tar.gz"
-      sha256 "a9097df0b18ec3ccd6b55a529d158032b18d0bf79e1fe0c8c7cf21f82b4daefe"
+  # macOS arm64 only. Linux users: see
+  # https://github.com/cklxx/arle#quick-start (Docker, install.sh, or source).
+  # The `mislav/bump-homebrew-formula-action` only knows how to bump one URL,
+  # so a multi-platform formula goes stale on every release. Linux is rare
+  # enough on this tool (CUDA driver gating, server deployments, Docker is
+  # the canonical path) that the brew formula is intentionally Mac-only.
+  depends_on arch: :arm64
+  depends_on :macos
 
-      def install
-        bin.install "arle"
-        bin.install "metal_serve" if File.exist?("metal_serve")
-      end
-    end
-  end
+  url "https://github.com/cklxx/arle/releases/download/v0.1.1/arle-v0.1.1-macos-arm64.tar.gz"
+  sha256 "a9097df0b18ec3ccd6b55a529d158032b18d0bf79e1fe0c8c7cf21f82b4daefe"
 
-  on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/cklxx/arle/releases/download/v0.1.0/arle-v0.1.0-linux-x86_64.tar.gz"
-      sha256 "0329aea16641d9e8b74658f8cf0958f714173df9582a52dc708cf7300b8f4d99"
-
-      def install
-        bin.install "arle"
-        bin.install "infer" if File.exist?("infer")
-        bin.install "bench_serving" if File.exist?("bench_serving")
-      end
-    end
+  def install
+    bin.install "arle"
+    bin.install "metal_serve" if File.exist?("metal_serve")
   end
 
   test do
