@@ -1,13 +1,13 @@
 class Arle < Formula
   desc "Pure-Rust runtime for serving, local agents, training, and evaluation"
   homepage "https://github.com/cklxx/arle"
-  version "0.1.0"
+  version "0.1.1"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/cklxx/arle/releases/download/v0.1.0/arle-v0.1.0-macos-arm64.tar.gz"
-      sha256 "e489966c52f1a954e4058d1193fc85bf92ce979895578024111fbdbaad510945"
+      url "https://github.com/cklxx/arle/releases/download/v0.1.1/arle-v0.1.1-macos-arm64.tar.gz"
+      sha256 "a9097df0b18ec3ccd6b55a529d158032b18d0bf79e1fe0c8c7cf21f82b4daefe"
 
       def install
         bin.install "arle"
