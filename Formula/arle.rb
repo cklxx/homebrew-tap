@@ -1,9 +1,9 @@
 class Arle < Formula
   desc "Pure-Rust runtime for serving, local agents, training, and evaluation"
   homepage "https://github.com/cklxx/arle"
-  url "https://github.com/cklxx/arle/releases/download/v0.1.4/arle-v0.1.4-macos-arm64.tar.gz"
-  version "0.1.4"
-  sha256 "c72cf517ec2c1757e4e928a459b6738240b47516c29840538fa63135eb1201d1"
+  url "https://github.com/cklxx/arle/releases/download/v0.1.5/arle-v0.1.5-macos-arm64.tar.gz"
+  version "0.1.5"
+  sha256 "45d17c2fe7cc16f1a565b44392367ea8e3ec7b84c2b7544acfdc45d3d203f587"
   license "MIT"
 
   # macOS arm64 only. Linux users: see
